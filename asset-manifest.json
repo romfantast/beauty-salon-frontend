@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/beauty-salon-frontend/static/css/main.7acaea2f.css",
+    "main.js": "/beauty-salon-frontend/static/js/main.07d3183d.js",
+    "index.html": "/beauty-salon-frontend/index.html",
+    "main.7acaea2f.css.map": "/beauty-salon-frontend/static/css/main.7acaea2f.css.map",
+    "main.07d3183d.js.map": "/beauty-salon-frontend/static/js/main.07d3183d.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7acaea2f.css",
+    "static/js/main.07d3183d.js"
+  ]
+}
