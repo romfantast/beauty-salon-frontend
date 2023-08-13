@@ -1,14 +1,13 @@
 {
   "files": {
-    "main.css": "/beauty-salon-frontend/static/css/main.d7e9946b.css",
-    "main.js": "/beauty-salon-frontend/static/js/main.49f4a644.js",
-    "static/media/logo.png": "/beauty-salon-frontend/static/media/logo.95618ca19e5f10c7986e.png",
+    "main.css": "/beauty-salon-frontend/static/css/main.1ba2ff60.css",
+    "main.js": "/beauty-salon-frontend/static/js/main.4a4f6175.js",
     "index.html": "/beauty-salon-frontend/index.html",
-    "main.d7e9946b.css.map": "/beauty-salon-frontend/static/css/main.d7e9946b.css.map",
-    "main.49f4a644.js.map": "/beauty-salon-frontend/static/js/main.49f4a644.js.map"
+    "main.1ba2ff60.css.map": "/beauty-salon-frontend/static/css/main.1ba2ff60.css.map",
+    "main.4a4f6175.js.map": "/beauty-salon-frontend/static/js/main.4a4f6175.js.map"
   },
   "entrypoints": [
-    "static/css/main.d7e9946b.css",
-    "static/js/main.49f4a644.js"
+    "static/css/main.1ba2ff60.css",
+    "static/js/main.4a4f6175.js"
   ]
 }
