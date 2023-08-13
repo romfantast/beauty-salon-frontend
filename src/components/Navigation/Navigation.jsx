@@ -1,58 +1,55 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import css from './Navigation.module.css';
-import { BiHomeAlt, BiMap, BiNotepad } from 'react-icons/bi';
-import { CgProfile } from 'react-icons/cg';
+import { IconContext } from 'react-icons';
+import navData from 'helpers/navData';
+import setLineParams from 'helpers/setLineParams';
 
 function Navigation() {
+  const [leftPos, setLeftPos] = useState('');
+  const [lineWidth, setLineWidth] = useState('');
+  const navRef = useRef();
+  const active = 'text-indigo-500';
+  const def = 'text-indigo-950';
+
+  useEffect(() => {
+    const list = navRef.current;
+    [...list.children].forEach(item => {
+      const isActive = item.children[0].classList.contains(active);
+      console.log(isActive);
+      if (isActive) {
+        setLineParams(item, setLineWidth, setLeftPos);
+      }
+    });
+  }, []);
+
+  const moveLine = ({ target }) => {
+    const link = target.closest('li');
+    setLineParams(link, setLineWidth, setLeftPos);
+  };
 
   return (
-    <nav className={css.nav}>
-      <ul className={css.navList}>
-        <li className={css.navItem}>
-          <NavLink
-            to={'/'}
-            className={({ isActive }) => (isActive ? css.active : css.navLink)}
-          >
-            <span>
-              <BiHomeAlt />
-            </span>
-            Home
-          </NavLink>
-        </li>
-        <li className={css.navItem}>
-          <NavLink
-            to={'/nearby'}
-            className={({ isActive }) => (isActive ? css.active : css.navLink)}
-          >
-            <span>
-              <BiMap />
-            </span>
-            Nearby
-          </NavLink>
-        </li>
-        <li className={css.navItem}>
-          <NavLink
-            to={'/appoinment'}
-            className={({ isActive }) => (isActive ? css.active : css.navLink)}
-          >
-            <span>
-              <BiNotepad />
-            </span>
-            Appoinment
-          </NavLink>
-        </li>
-        <li className={css.navItem}>
-          <NavLink
-            to={'/profile'}
-            className={({ isActive }) => (isActive ? css.active : css.navLink)}
-          >
-            <span>
-              <CgProfile />
-            </span>
-            Profile
-          </NavLink>
-        </li>
+    <nav className="relative">
+      <div
+        className={`absolute -top-px h-0.5 rounded-lg bg-indigo-500 ease-in-out duration-300`}
+        style={{ left: leftPos, width: lineWidth }}
+      ></div>
+      <ul className="flex justify-between px-4" ref={navRef}>
+        {navData.map(({ title, path, icon }) => (
+          <li className="p-2" key={title}>
+            <NavLink
+              to={path}
+              className={({ isActive }) => (isActive ? active : def)}
+              onClick={moveLine}
+            >
+              <span className="hidden">{title}</span>
+              <span>
+                <IconContext.Provider value={{ className: 'text-2xl' }}>
+                  {icon}
+                </IconContext.Provider>
+              </span>
+            </NavLink>
+          </li>
+        ))}
       </ul>
     </nav>
   );

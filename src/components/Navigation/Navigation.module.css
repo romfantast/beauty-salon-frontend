@@ -1,0 +1,9 @@
+.default > svg path {
+  fill: red;
+}
+.active > svg {
+  fill: green;
+}
+.active span {
+  color: red;
+}

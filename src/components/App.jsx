@@ -7,10 +7,13 @@ import PublicRoute from './PublicRoute/PublicRoute';
 import { RegisterPage } from 'pages/RegisterPage/RegisterPage';
 
 export const App = () => {
-	return (
+  return (
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<h1>hello</h1>} />
+        <Route path="nearby" element={<h1>nearby</h1>} />
+        <Route path="appointments" element={<h1>appointments</h1>} />
+        <Route path="profile" element={<h1>profile</h1>} />
         <Route path="/" element={<PublicRoute />}>
           <Route path="login" element={<LoginPage />} />
           <Route path="register" element={<RegisterPage />} />
@@ -25,5 +28,5 @@ export const App = () => {
         }
       />
     </Routes>
-	  );
+  );
 };

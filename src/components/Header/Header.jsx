@@ -1,17 +1,11 @@
 import React from 'react';
-import css from './Header.module.css';
-import Logo from 'components/Logo/Logo';
 import Navigation from 'components/Navigation/Navigation';
 
 function Header() {
-
   return (
-    <section className={css.sectionHeader}>
-      <header className={css.header}>
-        <Logo />
-        <Navigation />
-      </header>
-    </section>
+    <header className="border-t border-t-gray-400 fixed bottom-0 left-0 right-0">
+      <Navigation />
+    </header>
   );
 }
 
