@@ -15,7 +15,6 @@ function Navigation() {
     const list = navRef.current;
     [...list.children].forEach(item => {
       const isActive = item.children[0].classList.contains(active);
-      console.log(isActive);
       if (isActive) {
         setLineParams(item, setLineWidth, setLeftPos);
       }
