@@ -9,8 +9,9 @@ const settingsSlider = {
   appendDots: dots => (
     <div
       style={{
+        height: '50px',
         position: 'absolute',
-        bottom: '110px',
+        bottom: '31%',
         padding: '10px',
       }}
     >

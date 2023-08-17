@@ -34,7 +34,7 @@ function Navigation() {
       ></div>
       <ul className="flex justify-between px-4" ref={navRef}>
         {navData.map(({ title, path, icon }) => (
-          <li className="p-2" key={title}>
+          <li className="p-3" key={title}>
             <NavLink
               to={path}
               className={({ isActive }) => (isActive ? active : def)}
