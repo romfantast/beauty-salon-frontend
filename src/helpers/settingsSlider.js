@@ -10,7 +10,7 @@ const settingsSlider = {
     <div
       style={{
         position: 'absolute',
-        bottom: '33%',
+        bottom: '30%',
         padding: '10px',
       }}
     >

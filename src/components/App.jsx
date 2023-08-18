@@ -1,5 +1,6 @@
 import { lazy } from 'react';
-import { Route, Routes } from 'react-router';
+import { Route, Routes, useLocation } from 'react-router';
+import { AnimatePresence } from 'framer-motion';
 import Layout from './Layout/Layout';
 import PublicRoute from './PublicRoute/PublicRoute';
 import { OnBoard } from 'pages/OnBoardPage/OnBoard';
@@ -12,19 +13,22 @@ const RegisterPage = lazy(() => import('pages/RegisterPage/RegisterPage'));
 
 export const App = () => {
   const isAuth = useSelector(selectIsAuth);
+  const location = useLocation();
   return (
-    <Routes>
-      <Route path="/" element={<Layout />}>
-        {!isAuth && <Route index element={<OnBoard />} />}
-        <Route path="nearby" element={<h1>nearby</h1>} />
-        <Route path="appointments" element={<h1>appointments</h1>} />
-        <Route path="profile" element={<h1>profile</h1>} />
-        <Route path="/" element={<PublicRoute />}>
-          <Route path="login" element={<LoginPage />} />
-          <Route path="register" element={<RegisterPage />} />
+    <AnimatePresence>
+      <Routes location={location} key={location.pathname}>
+        <Route path="/" element={<Layout />}>
+          {!isAuth && <Route index element={<OnBoard />} />}
+          <Route path="nearby" element={<h1>nearby</h1>} />
+          <Route path="appointments" element={<h1>appointments</h1>} />
+          <Route path="profile" element={<h1>profile</h1>} />
+          <Route path="/" element={<PublicRoute />}>
+            <Route path="login" element={<LoginPage />} />
+            <Route path="register" element={<RegisterPage />} />
+          </Route>
         </Route>
-      </Route>
-      <Route path="*" element={<NotFound />} />
-    </Routes>
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </AnimatePresence>
   );
 };

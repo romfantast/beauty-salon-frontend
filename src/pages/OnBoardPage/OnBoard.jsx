@@ -7,18 +7,24 @@ import 'slick-carousel/slick/slick-theme.css';
 import slides from 'helpers/slides';
 import css from './OnBoard.module.css';
 import settingsSlider from 'helpers/settingsSlider';
+import {
+  authVariants,
+  pageVariants,
+  textVariants,
+} from 'helpers/animeVariants';
 
 export const OnBoard = () => {
-  const textVariants = {
-    hidden: { opacity: 0, y: '-100%' },
-    visible: { opacity: 1, y: 0 },
-  };
-  const authVariants = {
-    hidden: { opacity: 0, x: '100%' },
-    visible: { opacity: 1, x: 0 },
-  };
   return (
-    <section className={css.section}>
+    <motion.section
+      variants={pageVariants}
+      initial="initial"
+      animate="animate"
+      exit="exit"
+      transition={{
+        duration: 0.1,
+      }}
+      className={css.section}
+    >
       <div className="relative ">
         <Slider {...settingsSlider}>
           {slides.map(slide => (
@@ -68,6 +74,6 @@ export const OnBoard = () => {
           Get started
         </Link>
       </motion.div>
-    </section>
+    </motion.section>
   );
 };
