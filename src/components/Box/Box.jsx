@@ -1,5 +1,5 @@
 import React from 'react';
 
-export const Box = ({ children }) => {
-  return <section className="p-6">{children}</section>;
+export const Box = ({ styles, children }) => {
+  return <section className={styles}>{children}</section>;
 };

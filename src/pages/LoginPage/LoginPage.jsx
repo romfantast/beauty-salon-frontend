@@ -6,7 +6,7 @@ import { TitleLarge } from 'components/Texts/TitleLarge';
 
 const LoginPage = () => {
   return (
-    <Box>
+    <Box styles="p-6">
       <TitleLarge styles="text-slate-950 mt-12 mb-4">Welcome Back!</TitleLarge>
       <p className="pb-6 text-base text-neutral-600 mb-24">
         Don’t have an account?
