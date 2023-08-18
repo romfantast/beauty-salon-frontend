@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunkbeauty_salon_frontend=self.webpackChunkbeauty_salon_frontend||[]).push([[589],{9589:function(e,n,t){t.r(n);t(2791);var s=t(184);n.default=function(){return(0,s.jsx)("section",{children:(0,s.jsx)("div",{children:"RegisterPage"})})}}}]);
-//# sourceMappingURL=589.7fd050c6.chunk.js.map
