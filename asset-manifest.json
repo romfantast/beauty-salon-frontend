@@ -1,7 +1,9 @@
 {
   "files": {
-    "main.css": "/beauty-salon-frontend/static/css/main.7f2a434d.css",
-    "main.js": "/beauty-salon-frontend/static/js/main.7eda98aa.js",
+    "main.css": "/beauty-salon-frontend/static/css/main.613ff656.css",
+    "main.js": "/beauty-salon-frontend/static/js/main.38da70dc.js",
+    "static/js/44.1f8df97b.chunk.js": "/beauty-salon-frontend/static/js/44.1f8df97b.chunk.js",
+    "static/js/589.7fd050c6.chunk.js": "/beauty-salon-frontend/static/js/589.7fd050c6.chunk.js",
     "static/media/barber.jpg": "/beauty-salon-frontend/static/media/barber.0e24bb45e0a7d22e447e.jpg",
     "static/media/hair.jpg": "/beauty-salon-frontend/static/media/hair.4c15d6aeed455ef4a99a.jpg",
     "static/media/room.jpg": "/beauty-salon-frontend/static/media/room.ac3c8a97a3a3c50551c8.jpg",
@@ -11,11 +13,13 @@
     "static/media/slick.ttf": "/beauty-salon-frontend/static/media/slick.c94f7671dcc99dce43e2.ttf",
     "static/media/slick.woff": "/beauty-salon-frontend/static/media/slick.295183786cd8a1389865.woff",
     "index.html": "/beauty-salon-frontend/index.html",
-    "main.7f2a434d.css.map": "/beauty-salon-frontend/static/css/main.7f2a434d.css.map",
-    "main.7eda98aa.js.map": "/beauty-salon-frontend/static/js/main.7eda98aa.js.map"
+    "main.613ff656.css.map": "/beauty-salon-frontend/static/css/main.613ff656.css.map",
+    "main.38da70dc.js.map": "/beauty-salon-frontend/static/js/main.38da70dc.js.map",
+    "44.1f8df97b.chunk.js.map": "/beauty-salon-frontend/static/js/44.1f8df97b.chunk.js.map",
+    "589.7fd050c6.chunk.js.map": "/beauty-salon-frontend/static/js/589.7fd050c6.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.7f2a434d.css",
-    "static/js/main.7eda98aa.js"
+    "static/css/main.613ff656.css",
+    "static/js/main.38da70dc.js"
   ]
 }
