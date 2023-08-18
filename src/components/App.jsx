@@ -1,14 +1,14 @@
-// import { lazy } from 'react';
-// import { useEffect } from 'react';
+import { lazy } from 'react';
 import { Route, Routes } from 'react-router';
 import Layout from './Layout/Layout';
-import { LoginPage } from 'pages/LoginPage/LoginPage';
 import PublicRoute from './PublicRoute/PublicRoute';
-import { RegisterPage } from 'pages/RegisterPage/RegisterPage';
 import { OnBoard } from 'pages/OnBoardPage/OnBoard';
 import { NotFound } from 'pages/NotFound/NotFound';
 import { useSelector } from 'react-redux';
 import { selectIsAuth } from 'redux/auth/auth-selectors';
+
+const LoginPage = lazy(() => import('pages/LoginPage/LoginPage'));
+const RegisterPage = lazy(() => import('pages/RegisterPage/RegisterPage'));
 
 export const App = () => {
   const isAuth = useSelector(selectIsAuth);

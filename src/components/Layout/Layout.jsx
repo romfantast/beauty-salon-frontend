@@ -1,14 +1,14 @@
 import React, { Suspense } from 'react';
 import { Outlet } from 'react-router';
 import Header from 'components/Header/Header';
-import Loader from 'components/Loader/Loader';
 import MainPage from 'pages/MainPage/MainPage';
 
 function Layout() {
+  const isAuth = false;
   return (
     <MainPage>
-      <Header />
-      <Suspense fallback={<Loader />}>
+      {isAuth && <Header />}
+      <Suspense fallback={null}>
         <Outlet />
       </Suspense>
     </MainPage>
