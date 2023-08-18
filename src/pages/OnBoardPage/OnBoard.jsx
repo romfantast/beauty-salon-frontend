@@ -1,13 +1,22 @@
 import React from 'react';
+import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import Slider from 'react-slick/lib/slider';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import slides from 'helpers/slides';
 import css from './OnBoard.module.css';
 import settingsSlider from 'helpers/settingsSlider';
-import { Link } from 'react-router-dom';
 
 export const OnBoard = () => {
+  const textVariants = {
+    hidden: { opacity: 0, y: '-100%' },
+    visible: { opacity: 1, y: 0 },
+  };
+  const authVariants = {
+    hidden: { opacity: 0, x: '100%' },
+    visible: { opacity: 1, x: 0 },
+  };
   return (
     <section className={css.section}>
       <div className="relative ">
@@ -22,14 +31,30 @@ export const OnBoard = () => {
                 src={slide.src}
                 alt={slide.alt}
               />
-              <p className="absolute top-1/3 w-screen px-4 text-3xl font-semibold text-slate-50">
+              <motion.p
+                variants={textVariants}
+                initial="hidden"
+                animate="visible"
+                transition={{
+                  duration: 0.7,
+                }}
+                className="absolute top-1/3 w-screen px-4 text-3xl font-semibold text-slate-50"
+              >
                 {slide.desc}
-              </p>
+              </motion.p>
             </div>
           ))}
         </Slider>
       </div>
-      <div className="absolute bottom-14 flex gap-x-4 w-full px-4">
+      <motion.div
+        variants={authVariants}
+        initial="hidden"
+        animate="visible"
+        transition={{
+          duration: 0.5,
+        }}
+        className="absolute bottom-14 flex gap-x-4 w-full px-4"
+      >
         <Link
           to="/login"
           className="border border-solid border-slate-50 rounded-lg text-center text-slate-50 font-bold bg-transparent py-3 w-1/2"
@@ -42,7 +67,7 @@ export const OnBoard = () => {
         >
           Get started
         </Link>
-      </div>
+      </motion.div>
     </section>
   );
 };
