@@ -1,27 +1,17 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { Box } from 'components/Box/Box';
 import { Icon } from 'components/Icon/Icon';
 import { TitleLarge } from 'components/Texts/TitleLarge';
 
-const LoginPage = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+import { Formik, Form } from 'formik';
+import { CustomInput } from 'components/CustomInput/CustomInput';
+import { loginSchema } from 'schemas/loginSchema';
 
-  const handleChange = ({ target: { name, value } }) => {
-    switch (name) {
-      case 'password':
-        return setPassword(value.trim());
-      case 'email':
-        return setEmail(value.trim());
-      default:
-        return;
-    }
-  };
-  const onSubmit = e => {
-    e.preventDefault();
-    const credentials = { email, password };
-    console.log(credentials);
+const LoginPage = () => {
+  const onSubmit = (values, actions) => {
+    console.log(values);
+    actions.resetForm();
   };
   return (
     <Box styles="p-6">
@@ -36,40 +26,37 @@ const LoginPage = () => {
         </Link>
       </p>
       <div className="mb-8">
-        <form onSubmit={onSubmit} className="grid gap-4" autoComplete="off">
-          <label className="grid">
-            <span className="text-xs text-slate-950 leading-4 pl-2 pb-0.5">
-              Email
-            </span>
-            <input
-              className="border-indigo-200 border py-3 px-2 rounded-lg"
-              type="text"
-              placeholder="example@gmail.com"
-              name="email"
-              onChange={handleChange}
-              value={email}
-            />
-          </label>
-          <label className="grid mb-8">
-            <span className="text-xs text-slate-950 leading-4 pl-2 pb-0.5">
-              Password
-            </span>
-            <input
-              className="border-indigo-200 border py-3 px-2 rounded-lg"
-              type="password"
-              placeholder="Enter password"
-              name="password"
-              onChange={handleChange}
-              value={password}
-            />
-          </label>
-          <button
-            className="bg-indigo-500 text-slate-50 font-bold text-base p-4 rounded-lg"
-            type="submit"
-          >
-            Login
-          </button>
-        </form>
+        <Formik
+          initialValues={{ email: '', password: '' }}
+          validationSchema={loginSchema}
+          onSubmit={onSubmit}
+          autocomplete="off"
+        >
+          {props => (
+            <Form className="grid gap-4" autoComplete="off">
+              <CustomInput
+                label="Email"
+                name="email"
+                type="text"
+                placeholder="example@gmail.com"
+              />
+              <CustomInput
+                label="Password"
+                styles="mb-8"
+                name="password"
+                type="password"
+                placeholder="Enter password"
+              />
+              {/* add isSubmiting from formik when click */}
+              <button
+                className="bg-indigo-500 text-slate-50 font-bold text-base p-4 rounded-lg"
+                type="submit"
+              >
+                Login
+              </button>
+            </Form>
+          )}
+        </Formik>
       </div>
       <div className="text-center mb-8">
         <span className="text-indigo-500 font-semibold">

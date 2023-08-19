@@ -1,32 +1,28 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
+import { useFormik } from 'formik';
 import { Icon } from 'components/Icon/Icon';
 import { TitleLarge } from 'components/Texts/TitleLarge';
 import { Box } from 'components/Box/Box';
+import { regSchema } from 'schemas/registerSchema';
 
 const RegisterPage = () => {
-  const [username, setUserName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-
-  const handleChange = ({ target: { name, value } }) => {
-    switch (name) {
-      case 'name':
-        return setUserName(value.trimStart());
-      case 'password':
-        return setPassword(value.trim());
-      case 'email':
-        return setEmail(value.trim());
-      default:
-        return;
-    }
+  const onSubmit = (values, actions) => {
+    console.log(values);
+    actions.resetForm();
   };
+  // here is one variant to use formik
+  // in login page is second different variant
 
-  const onSubmit = e => {
-    e.preventDefault();
-    const credentials = { username, email, password };
-    console.log(credentials);
-  };
+  const formik = useFormik({
+    initialValues: {
+      name: '',
+      email: '',
+      password: '',
+    },
+    validationSchema: regSchema,
+    onSubmit,
+  });
 
   return (
     <Box styles="pb-6">
@@ -43,46 +39,74 @@ const RegisterPage = () => {
         </p>
       </div>
       <div className="px-6">
-        <form onSubmit={onSubmit} className="grid gap-4" autoComplete="off">
-          <label className="grid">
+        <form
+          onSubmit={formik.handleSubmit}
+          className="grid gap-4"
+          autoComplete="off"
+        >
+          <label className="relative grid">
             <span className="text-xs text-slate-950 leading-4 pl-2 pb-0.5">
               Name
             </span>
             <input
-              className="border-indigo-200 border py-3 px-2 rounded-lg"
+              className={`border-indigo-200 border py-3 px-2 rounded-lg focus:outline-none ${
+                formik.errors.name && formik.touched.name && 'border-red-500'
+              }`}
               type="text"
               placeholder="John Doe"
               name="name"
-              onChange={handleChange}
-              value={username}
+              value={formik.values.name}
+              onBlur={formik.handleBlur}
+              onChange={formik.handleChange}
             />
+            {formik.errors.name && formik.touched.name && (
+              <p className="absolute -bottom-4 text-xs text-red-500">
+                {formik.errors.name}
+              </p>
+            )}
           </label>
-          <label className="grid">
+          <label className="relative grid">
             <span className="text-xs text-slate-950 leading-4 pl-2 pb-0.5">
               Email
             </span>
             <input
-              className="border-indigo-200 border py-3 px-2 rounded-lg"
+              className={`border-indigo-200 border py-3 px-2 rounded-lg focus:outline-none ${
+                formik.errors.email && formik.touched.email && 'border-red-500'
+              }`}
               type="text"
               placeholder="example@gmail.com"
               name="email"
-              onChange={handleChange}
-              value={email}
+              value={formik.values.email}
+              onBlur={formik.handleBlur}
+              onChange={formik.handleChange}
             />
+            {formik.errors.email && formik.touched.email && (
+              <p className="absolute -bottom-4 text-xs text-red-500">
+                {formik.errors.email}
+              </p>
+            )}
           </label>
-          <label className="grid mb-8">
+          <label className="relative grid mb-8">
             <span className="text-xs text-slate-950 leading-4 pl-2 pb-0.5">
               Password
             </span>
             <input
-              className="border-indigo-200 border py-3 px-2 rounded-lg"
+              className={`border-indigo-200 border py-3 px-2 rounded-lg focus:outline-none
+							${formik.errors.password && formik.touched.password && 'border-red-500'}`}
               type="password"
               placeholder="Set a password"
               name="password"
-              onChange={handleChange}
-              value={password}
+              value={formik.values.password}
+              onBlur={formik.handleBlur}
+              onChange={formik.handleChange}
             />
+            {formik.errors.password && formik.touched.password && (
+              <p className="absolute -bottom-4 text-xs text-red-500">
+                {formik.errors.password}
+              </p>
+            )}
           </label>
+          {/* add isSubmiting from formik when click */}
           <button
             className="bg-indigo-500 text-slate-50 font-bold text-base p-4 rounded-lg mb-8"
             type="submit"
