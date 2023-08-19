@@ -1,10 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Box } from 'components/Box/Box';
 import { Icon } from 'components/Icon/Icon';
 import { TitleLarge } from 'components/Texts/TitleLarge';
 
 const LoginPage = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleChange = ({ target: { name, value } }) => {
+    switch (name) {
+      case 'password':
+        return setPassword(value.trim());
+      case 'email':
+        return setEmail(value.trim());
+      default:
+        return;
+    }
+  };
+  const onSubmit = e => {
+    e.preventDefault();
+    const credentials = { email, password };
+    console.log(credentials);
+  };
   return (
     <Box styles="p-6">
       <TitleLarge styles="text-slate-950 mt-12 mb-4">Welcome Back!</TitleLarge>
@@ -18,7 +36,7 @@ const LoginPage = () => {
         </Link>
       </p>
       <div className="mb-8">
-        <form className="grid gap-4" autoComplete="off">
+        <form onSubmit={onSubmit} className="grid gap-4" autoComplete="off">
           <label className="grid">
             <span className="text-xs text-slate-950 leading-4 pl-2 pb-0.5">
               Email
@@ -27,6 +45,9 @@ const LoginPage = () => {
               className="border-indigo-200 border py-3 px-2 rounded-lg"
               type="text"
               placeholder="example@gmail.com"
+              name="email"
+              onChange={handleChange}
+              value={email}
             />
           </label>
           <label className="grid mb-8">
@@ -37,6 +58,9 @@ const LoginPage = () => {
               className="border-indigo-200 border py-3 px-2 rounded-lg"
               type="password"
               placeholder="Enter password"
+              name="password"
+              onChange={handleChange}
+              value={password}
             />
           </label>
           <button

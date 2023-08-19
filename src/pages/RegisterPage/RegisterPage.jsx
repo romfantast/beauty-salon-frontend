@@ -1,10 +1,33 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Icon } from 'components/Icon/Icon';
 import { TitleLarge } from 'components/Texts/TitleLarge';
 import { Box } from 'components/Box/Box';
 
 const RegisterPage = () => {
+  const [username, setUserName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleChange = ({ target: { name, value } }) => {
+    switch (name) {
+      case 'name':
+        return setUserName(value.trimStart());
+      case 'password':
+        return setPassword(value.trim());
+      case 'email':
+        return setEmail(value.trim());
+      default:
+        return;
+    }
+  };
+
+  const onSubmit = e => {
+    e.preventDefault();
+    const credentials = { username, email, password };
+    console.log(credentials);
+  };
+
   return (
     <Box styles="pb-6">
       <div className="p-6 mb-24 bg-indigo-500">
@@ -20,7 +43,7 @@ const RegisterPage = () => {
         </p>
       </div>
       <div className="px-6">
-        <form className="grid gap-4" autoComplete="off">
+        <form onSubmit={onSubmit} className="grid gap-4" autoComplete="off">
           <label className="grid">
             <span className="text-xs text-slate-950 leading-4 pl-2 pb-0.5">
               Name
@@ -29,6 +52,9 @@ const RegisterPage = () => {
               className="border-indigo-200 border py-3 px-2 rounded-lg"
               type="text"
               placeholder="John Doe"
+              name="name"
+              onChange={handleChange}
+              value={username}
             />
           </label>
           <label className="grid">
@@ -39,6 +65,9 @@ const RegisterPage = () => {
               className="border-indigo-200 border py-3 px-2 rounded-lg"
               type="text"
               placeholder="example@gmail.com"
+              name="email"
+              onChange={handleChange}
+              value={email}
             />
           </label>
           <label className="grid mb-8">
@@ -49,6 +78,9 @@ const RegisterPage = () => {
               className="border-indigo-200 border py-3 px-2 rounded-lg"
               type="password"
               placeholder="Set a password"
+              name="password"
+              onChange={handleChange}
+              value={password}
             />
           </label>
           <button
