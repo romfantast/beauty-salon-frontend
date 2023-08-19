@@ -92,7 +92,7 @@ const RegisterPage = () => {
             </span>
             <input
               className={`border-indigo-200 border py-3 px-2 rounded-lg focus:outline-none
-							${formik.errors.password && formik.touched.password && 'border-red-500'}`}
+				  ${formik.errors.password && formik.touched.password && 'border-red-500'}`}
               type="password"
               placeholder="Set a password"
               name="password"

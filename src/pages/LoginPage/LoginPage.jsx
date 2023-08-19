@@ -14,7 +14,17 @@ const LoginPage = () => {
     actions.resetForm();
   };
   return (
-    <Box styles="p-6">
+    <Box
+      initial={{ width: 0 }}
+      animate={{ width: '100%' }}
+      exit={{
+        width: window.innerWidth,
+        transition: {
+          duration: 0.5,
+        },
+      }}
+      styles="p-6"
+    >
       <TitleLarge styles="text-slate-950 mt-12 mb-4">Welcome Back!</TitleLarge>
       <p className="pb-6 text-base text-neutral-600 mb-24">
         Don’t have an account?

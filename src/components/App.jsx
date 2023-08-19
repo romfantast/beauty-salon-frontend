@@ -1,11 +1,11 @@
-import { lazy } from 'react';
+import React, { lazy } from 'react';
 import { Route, Routes, useLocation } from 'react-router';
 import { AnimatePresence } from 'framer-motion';
+import { useSelector } from 'react-redux';
 import Layout from './Layout/Layout';
 import PublicRoute from './PublicRoute/PublicRoute';
 import { OnBoard } from 'pages/OnBoardPage/OnBoard';
 import { NotFound } from 'pages/NotFound/NotFound';
-import { useSelector } from 'react-redux';
 import { selectIsAuth } from 'redux/auth/auth-selectors';
 
 const LoginPage = lazy(() => import('pages/LoginPage/LoginPage'));
