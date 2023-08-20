@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-axios.defaults.baseURL = 'https://beauty-salon-backend-0ks8.onrender.com';
+axios.defaults.baseURL = process.env.REACT_APP_BACKEND_URL;
 
 const register = async user => {
   return await axios.post('/auth/register', user);

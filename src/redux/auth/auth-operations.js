@@ -2,7 +2,6 @@ import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import API from 'services/API';
 
-
 export const token = {
   set(token) {
     axios.defaults.headers.common.Authorization = `Bearer ${token}`;
@@ -19,7 +18,7 @@ const register = createAsyncThunk(
       const { data } = await API.register(credentials);
       return data;
     } catch (error) {
-      thunkApi.rejectWithValue();
+      return thunkApi.rejectWithValue(error);
     }
   }
 );
@@ -27,20 +26,20 @@ const register = createAsyncThunk(
 export const login = createAsyncThunk('auth/login', async (user, thunkAPI) => {
   try {
     const { data } = await API.login(user);
-    token.set(data.accessToken);
+    token.set(data.token);
     return data;
   } catch (error) {
-    return thunkAPI.rejectWithValue();
+    return thunkAPI.rejectWithValue(error);
   }
 });
 
 const logout = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
   try {
-    const response = await API.logout();
+    const { data } = await API.logout();
     token.unset();
-    return response;
-  } catch (e) {
-    return thunkAPI.rejectWithValue(e.message);
+    return data;
+  } catch (error) {
+    return thunkAPI.rejectWithValue(error);
   }
 });
 

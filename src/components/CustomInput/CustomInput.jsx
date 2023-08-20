@@ -3,8 +3,6 @@ import React from 'react';
 
 export const CustomInput = ({ label, styles, ...props }) => {
   const [field, meta] = useField(props);
-  console.log(field);
-  console.log(meta);
   return (
     <>
       <label className={`relative grid ${styles}`}>

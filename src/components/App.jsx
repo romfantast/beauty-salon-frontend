@@ -7,9 +7,12 @@ import PublicRoute from './PublicRoute/PublicRoute';
 import { OnBoard } from 'pages/OnBoardPage/OnBoard';
 import { NotFound } from 'pages/NotFound/NotFound';
 import { selectIsAuth } from 'redux/auth/auth-selectors';
+import PrivateRoute from './PrivateRoute/PrivateRoute';
 
 const LoginPage = lazy(() => import('pages/LoginPage/LoginPage'));
 const RegisterPage = lazy(() => import('pages/RegisterPage/RegisterPage'));
+const MyBookings = lazy(() => import('pages/MyBookings/MyBookings'));
+const MyProfile = lazy(() => import('pages/MyProfile/MyProfile'));
 
 export const App = () => {
   const isAuth = useSelector(selectIsAuth);
@@ -19,12 +22,15 @@ export const App = () => {
       <Routes location={location} key={location.pathname}>
         <Route path="/" element={<Layout />}>
           {!isAuth && <Route index element={<OnBoard />} />}
-          <Route path="nearby" element={<h1>nearby</h1>} />
-          <Route path="appointments" element={<h1>appointments</h1>} />
-          <Route path="profile" element={<h1>profile</h1>} />
           <Route path="/" element={<PublicRoute />}>
             <Route path="login" element={<LoginPage />} />
             <Route path="register" element={<RegisterPage />} />
+          </Route>
+          <Route path="/" element={<PrivateRoute />}>
+            <Route path="home" element={<h1>home</h1>} />
+            <Route path="nearby" element={<h1>nearby</h1>} />
+            <Route path="mybookings" element={<MyBookings />} />
+            <Route path="profile" element={<MyProfile />} />
           </Route>
         </Route>
         <Route path="*" element={<NotFound />} />

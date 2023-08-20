@@ -8,6 +8,7 @@ const initialState = {
   isAuth: false,
   token: null,
   status: fetchStatus.idle,
+  isLoading: false,
   error: '',
 };
 
@@ -18,42 +19,49 @@ const authSlice = createSlice({
     builder
       .addCase(authOperations.register.pending, (state, _) => {
         state.status = fetchStatus.pending;
+        state.isLoading = true;
       })
-      .addCase(authOperations.register.fulfilled, (state, action) => {
+      .addCase(authOperations.register.fulfilled, (state, _) => {
         state.status = fetchStatus.fullfield;
-        state.token = action.payload.token;
-        state.isAuth = true;
-        state.error = '';
+        state.isLoading = false;
       })
-      .addCase(authOperations.register.rejected, (state, _) => {
+      .addCase(authOperations.register.rejected, (state, action) => {
         state.status = fetchStatus.rejected;
         state.token = null;
+        state.isLoading = false;
+        state.error = action.payload.response.data.message;
       })
       .addCase(authOperations.login.pending, (state, _) => {
         state.status = fetchStatus.pending;
+        state.isLoading = true;
       })
       .addCase(authOperations.login.fulfilled, (state, action) => {
         state.status = fetchStatus.fullfield;
         state.token = action.payload.token;
         state.isAuth = true;
+        state.isLoading = false;
         state.error = '';
       })
       .addCase(authOperations.login.rejected, (state, _) => {
         state.status = fetchStatus.rejected;
+        state.isLoading = false;
         state.token = null;
       })
       .addCase(authOperations.logout.pending, (state, _) => {
         state.status = fetchStatus.pending;
+        state.isLoading = true;
       })
       .addCase(authOperations.logout.fulfilled, (state, _) => {
         state.status = fetchStatus.fullfield;
         state.token = '';
         state.isAuth = false;
+        state.isLoading = false;
         state.error = '';
       })
       .addCase(authOperations.logout.rejected, (state, _) => {
         state.status = fetchStatus.rejected;
         state.token = null;
+        state.isLoading = false;
       });
   },
 });

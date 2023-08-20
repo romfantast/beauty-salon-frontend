@@ -3,7 +3,7 @@ import { BiFace, BiHomeAlt, BiMap, BiNotepad } from 'react-icons/bi';
 const navData = [
   {
     title: 'Home',
-    path: '/',
+    path: '/home',
     icon: <BiHomeAlt />,
   },
   {
@@ -12,8 +12,8 @@ const navData = [
     icon: <BiMap />,
   },
   {
-    title: 'Appointments',
-    path: '/appointments',
+    title: 'My Bookings',
+    path: '/mybookings',
     icon: <BiNotepad />,
   },
   {
