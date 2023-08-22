@@ -1,15 +1,15 @@
-import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { selectIsAuth, selectIsLoading } from 'redux/auth/auth-selectors';
-import { ButtonLoader } from 'components/Loader/ButtonLoader';
-import authOperations from 'redux/auth/auth-operations';
+import React, { useState } from 'react';
 import { Icon } from 'components/Icon/Icon';
 import { profileSettings } from 'helpers/profileSettings';
+import { ModalLogout } from 'components/ModalLogout/ModalLogout';
+import { AnimatePresence } from 'framer-motion';
 
 const MyProfile = () => {
-  const isAuth = useSelector(selectIsAuth);
-  const isLoading = useSelector(selectIsLoading);
-  const dispatch = useDispatch();
+  const [isOpen, setIsOpen] = useState(false);
+
+  const handleToggleModal = () => {
+    setIsOpen(isOpen => !isOpen);
+  };
 
   return (
     <section>
@@ -50,8 +50,15 @@ const MyProfile = () => {
         <div className="p-6">
           <ul className="grid gap-y-8">
             {profileSettings.map(item => (
-              <li key={item.icon}>
-                <div className="flex items-start gap-x-4">
+              <li
+                key={item.icon}
+                onClick={() =>
+                  item.function === 'logout'
+                    ? setIsOpen(prevOpen => !prevOpen)
+                    : false
+                }
+              >
+                <div className="flex items-center gap-x-4">
                   <Icon
                     width="24"
                     height="24"
@@ -79,17 +86,10 @@ const MyProfile = () => {
           </ul>
         </div>
       </div>
-      {isAuth && (
-        <div className="px-6">
-          <button
-            className="flex justify-center w-full bg-indigo-500 text-slate-50 font-bold text-base p-4 rounded-lg disabled:bg-slate-300 disabled:text-neutral-600"
-            type="submit"
-            disabled={isLoading}
-            onClick={() => dispatch(authOperations.logout())}
-          >
-            {isLoading ? <ButtonLoader /> : 'Logout'}
-          </button>
-        </div>
+      {isOpen && (
+        <AnimatePresence>
+          <ModalLogout onToggleModal={handleToggleModal} />
+        </AnimatePresence>
       )}
     </section>
   );
