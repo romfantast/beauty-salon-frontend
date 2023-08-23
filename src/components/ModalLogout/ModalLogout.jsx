@@ -39,7 +39,7 @@ export const ModalLogout = ({ onToggleModal }) => {
   return createPortal(
     <div
       onClick={handleBackdropClick}
-      className="fixed z-20 h-screen w-screen top-0 right-0 bottom-0 left-0 bg-slate-950/70 flex justify-center items-end"
+      className="fixed z-20 h-[100dvh] w-screen top-0 right-0 bottom-0 left-0 bg-slate-950/70 flex justify-center items-end"
     >
       <motion.div
         variants={modalLogoutVariants}
