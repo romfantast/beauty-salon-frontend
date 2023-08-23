@@ -8,6 +8,7 @@ import { OnBoard } from 'pages/OnBoardPage/OnBoard';
 import { NotFound } from 'pages/NotFound/NotFound';
 import { selectIsAuth } from 'redux/auth/auth-selectors';
 import PrivateRoute from './PrivateRoute/PrivateRoute';
+import Home from 'pages/Home/Home';
 
 const LoginPage = lazy(() => import('pages/LoginPage/LoginPage'));
 const RegisterPage = lazy(() => import('pages/RegisterPage/RegisterPage'));
@@ -27,7 +28,7 @@ export const App = () => {
             <Route path="register" element={<RegisterPage />} />
           </Route>
           <Route path="/" element={<PrivateRoute />}>
-            <Route path="home" element={<h1>home</h1>} />
+            <Route path="home" element={<Home />} />
             <Route path="nearby" element={<h1>nearby</h1>} />
             <Route path="mybookings" element={<MyBookings />} />
             <Route path="profile" element={<MyProfile />} />
