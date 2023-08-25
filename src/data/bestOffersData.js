@@ -1,0 +1,38 @@
+export const bestOffersData = [
+  {
+    gender: 'men',
+    salon: 'Mounrich Spa Services',
+    discount: '50',
+    img: 'mens',
+    rating: '4.9',
+    away: '5.0',
+    price: '$$',
+  },
+  {
+    gender: 'woman',
+    salon: 'Mounrich Spa Services',
+    discount: '20',
+    img: 'rainbow',
+    rating: '4.5',
+    away: '5.0',
+    price: '$$$$$',
+  },
+  {
+    gender: 'woman',
+    salon: 'Mounrich Spa Services',
+    discount: '35',
+    img: 'waxing',
+    rating: '5.0',
+    away: '5.0',
+    price: '$$$$',
+  },
+  {
+    gender: 'woman',
+    salon: 'Mounrich Spa Services',
+    discount: '70',
+    img: 'makeup',
+    rating: '4.7',
+    away: '5.0',
+    price: '$$$',
+  },
+];
