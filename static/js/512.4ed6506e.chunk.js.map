@@ -1,1 +1,0 @@
-{"version":3,"file":"static/js/512.4ed6506e.chunk.js","mappings":"+JAMA,UAJmB,WACjB,OAAO,yBAAK,cACb,C","sources":["pages/MyBookings/MyBookings.jsx"],"sourcesContent":["import React from 'react';\n\nconst MyBookings = () => {\n  return <div>MyBookings</div>;\n};\n\nexport default MyBookings;\n"],"names":[],"sourceRoot":""}
