@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { IconContext } from 'react-icons';
-import navData from 'helpers/navData';
+import navData from 'data/navData';
 import setLineParams from 'helpers/setLineParams';
 
 function Navigation() {
@@ -29,7 +29,7 @@ function Navigation() {
   return (
     <nav className="relative">
       <div
-        className={`absolute -top-px h-0.5 rounded-lg bg-indigo-500 ease-in-out duration-300`}
+        className={`absolute -top-px h-0.5 bg-indigo-500 ease-in-out duration-300`}
         style={{ left: leftPos, width: lineWidth }}
       ></div>
       <ul className="flex justify-between px-4" ref={navRef}>

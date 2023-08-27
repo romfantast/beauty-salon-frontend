@@ -12,7 +12,7 @@ import Home from 'pages/Home/Home';
 
 const LoginPage = lazy(() => import('pages/LoginPage/LoginPage'));
 const RegisterPage = lazy(() => import('pages/RegisterPage/RegisterPage'));
-const MyBookings = lazy(() => import('pages/MyBookings/MyBookings'));
+const MyBookings = lazy(() => import('pages/MyBookings/MyBooking'));
 const MyProfile = lazy(() => import('pages/MyProfile/MyProfile'));
 
 export const App = () => {
