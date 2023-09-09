@@ -2,6 +2,10 @@ import axios from 'axios';
 
 axios.defaults.baseURL = process.env.REACT_APP_BACKEND_URL;
 
+export const instance = axios.create({
+  baseURL: process.env.REACT_APP_BACKEND_URL,
+});
+
 const register = async user => {
   return await axios.post('/auth/register', user);
 };
@@ -11,7 +15,7 @@ const login = async user => {
 };
 
 const logout = async () => {
-  return await axios.post('/auth/logout');
+  return await instance.post('/auth/logout');
 };
 
 const currentUser = async () => {

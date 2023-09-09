@@ -1,25 +1,16 @@
 import React, { useState } from 'react';
-import { BsCloudUpload } from 'react-icons/bs';
+
 import { Icon } from 'components/Icon/Icon';
 import { profileSettings } from 'helpers/profileSettings';
 import { ModalLogout } from 'components/ModalLogout/ModalLogout';
 import { AnimatePresence } from 'framer-motion';
-import { useDispatch } from 'react-redux';
-import profileOperations from 'redux/profile/profile-operations';
+import Avatar from 'components/Profile/Avatar/Avatar';
 
 const MyProfile = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const dispatch = useDispatch();
 
   const handleToggleModal = () => {
     setIsOpen(isOpen => !isOpen);
-  };
-
-  const handleSubmitImage = e => {
-    const file = e.target.files[0];
-    const formData = new FormData();
-    formData.append('avatarUrl', file);
-    dispatch(profileOperations.updateAvatar(formData));
   };
 
   return (
@@ -31,27 +22,7 @@ const MyProfile = () => {
         }}
         className="flex gap-x-2 items-center px-6 pt-6 pb-5"
       >
-        {/* <img
-          style={{ borderRadius: '50%' }}
-          className="w-16 h-16"
-          src="https://i.pinimg.com/236x/4b/da/b5/4bdab596617446d1e7b9fdcb3e8d71f2.jpg"
-          alt="avatar"
-        /> */}
-        <div
-          className="w-16 h-16 bg-slate-300 relative grid place-content-center"
-          style={{ borderRadius: '50%' }}
-        >
-          <BsCloudUpload />
-          <label className="absolute w-full h-full cursor-pointer">
-            <input
-              className="w-0 h-0 opacity-0 overflow-hidden"
-              onChange={handleSubmitImage}
-              type="file"
-              name="avatarUrl"
-            />
-          </label>
-        </div>
-
+        <Avatar />
         <div className="grow">
           <div className="w-full flex justify-between items-center">
             <p className="text-lg font-bold">Anna Doe</p>

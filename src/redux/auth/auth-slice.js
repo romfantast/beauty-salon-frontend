@@ -60,8 +60,10 @@ const authSlice = createSlice({
       })
       .addCase(authOperations.logout.rejected, (state, _) => {
         state.status = fetchStatus.rejected;
-        state.token = null;
+        state.token = '';
+        state.isAuth = false;
         state.isLoading = false;
+        state.error = '';
       });
   },
 });

@@ -1,1 +1,1 @@
-export const getAvatarURl = state => state.profile.avatarUrl;
+export const selectAvatarUrl = state => state.profile.avatarUrl;
