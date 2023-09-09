@@ -1,11 +1,11 @@
 {
   "files": {
     "main.css": "/beauty-salon-frontend/static/css/main.1a21ca51.css",
-    "main.js": "/beauty-salon-frontend/static/js/main.ae21830a.js",
+    "main.js": "/beauty-salon-frontend/static/js/main.18715662.js",
     "static/js/352.bba6e6c2.chunk.js": "/beauty-salon-frontend/static/js/352.bba6e6c2.chunk.js",
     "static/js/682.c6578f08.chunk.js": "/beauty-salon-frontend/static/js/682.c6578f08.chunk.js",
     "static/js/627.127acae3.chunk.js": "/beauty-salon-frontend/static/js/627.127acae3.chunk.js",
-    "static/js/570.7c44e39e.chunk.js": "/beauty-salon-frontend/static/js/570.7c44e39e.chunk.js",
+    "static/js/766.6b49e4b6.chunk.js": "/beauty-salon-frontend/static/js/766.6b49e4b6.chunk.js",
     "static/js/691.7612f5aa.chunk.js": "/beauty-salon-frontend/static/js/691.7612f5aa.chunk.js",
     "static/js/430.b17f2229.chunk.js": "/beauty-salon-frontend/static/js/430.b17f2229.chunk.js",
     "static/js/126.c5aff762.chunk.js": "/beauty-salon-frontend/static/js/126.c5aff762.chunk.js",
@@ -29,17 +29,17 @@
     "static/media/slick.woff": "/beauty-salon-frontend/static/media/slick.295183786cd8a1389865.woff",
     "index.html": "/beauty-salon-frontend/index.html",
     "main.1a21ca51.css.map": "/beauty-salon-frontend/static/css/main.1a21ca51.css.map",
-    "main.ae21830a.js.map": "/beauty-salon-frontend/static/js/main.ae21830a.js.map",
+    "main.18715662.js.map": "/beauty-salon-frontend/static/js/main.18715662.js.map",
     "352.bba6e6c2.chunk.js.map": "/beauty-salon-frontend/static/js/352.bba6e6c2.chunk.js.map",
     "682.c6578f08.chunk.js.map": "/beauty-salon-frontend/static/js/682.c6578f08.chunk.js.map",
     "627.127acae3.chunk.js.map": "/beauty-salon-frontend/static/js/627.127acae3.chunk.js.map",
-    "570.7c44e39e.chunk.js.map": "/beauty-salon-frontend/static/js/570.7c44e39e.chunk.js.map",
+    "766.6b49e4b6.chunk.js.map": "/beauty-salon-frontend/static/js/766.6b49e4b6.chunk.js.map",
     "691.7612f5aa.chunk.js.map": "/beauty-salon-frontend/static/js/691.7612f5aa.chunk.js.map",
     "430.b17f2229.chunk.js.map": "/beauty-salon-frontend/static/js/430.b17f2229.chunk.js.map",
     "126.c5aff762.chunk.js.map": "/beauty-salon-frontend/static/js/126.c5aff762.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.1a21ca51.css",
-    "static/js/main.ae21830a.js"
+    "static/js/main.18715662.js"
   ]
 }
