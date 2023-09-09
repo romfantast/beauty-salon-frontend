@@ -44,4 +44,5 @@ const logout = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
 });
 
 const authOperations = { register, login, logout };
+
 export default authOperations;
