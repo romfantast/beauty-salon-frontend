@@ -1,15 +1,11 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { token } from 'redux/auth/auth-operations';
+import { checkIsToken } from 'services/authAPI';
 import { profileAPI } from 'services/profileAPI';
 
 const updateAvatar = createAsyncThunk(
   '/profile/updateAvatar',
   async (file, thunkAPI) => {
-    const persistToken = thunkAPI.getState().auth.token;
-    if (persistToken === null) {
-      return thunkAPI.rejectWithValue();
-    }
-    token.set(persistToken);
+    checkIsToken(thunkAPI);
     try {
       const { data } = await profileAPI.updateImage(file);
       return data;
@@ -22,11 +18,7 @@ const updateAvatar = createAsyncThunk(
 const getAvatar = createAsyncThunk(
   '/profile/getAvatar',
   async (_, thunkAPI) => {
-    const persistToken = thunkAPI.getState().auth.token;
-    if (persistToken === null) {
-      return thunkAPI.rejectWithValue();
-    }
-    token.set(persistToken);
+    checkIsToken(thunkAPI);
     try {
       const { data } = await profileAPI.getImage();
       return data;

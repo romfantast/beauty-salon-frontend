@@ -1,17 +1,5 @@
-import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import API, { instance } from 'services/API';
-
-export const token = {
-  set(token) {
-    axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-    instance.defaults.headers.common.Authorization = `Bearer ${token}`;
-  },
-  unset() {
-    axios.defaults.headers.common.Authorization = '';
-    instance.defaults.headers.common.Authorization = '';
-  },
-};
+import API, { checkIsToken, token } from 'services/authAPI';
 
 const register = createAsyncThunk(
   'auth/register',
@@ -36,11 +24,7 @@ export const login = createAsyncThunk('auth/login', async (user, thunkAPI) => {
 });
 
 const logout = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
-  const persistToken = thunkAPI.getState().auth.token;
-  if (persistToken === null) {
-    return thunkAPI.rejectWithValue();
-  }
-  token.set(persistToken);
+  checkIsToken(thunkAPI);
   try {
     const { data } = await API.logout();
     token.unset();
