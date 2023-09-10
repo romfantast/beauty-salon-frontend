@@ -1,17 +1,33 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { Icon } from 'components/Icon/Icon';
 import { profileSettings } from 'helpers/profileSettings';
 import { ModalLogout } from 'components/ModalLogout/ModalLogout';
 import { AnimatePresence } from 'framer-motion';
 import Avatar from 'components/Profile/Avatar/Avatar';
+import profileOperations from 'redux/profile/profile-operations';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  selectUserEmail,
+  selectUserName,
+} from 'redux/profile/profile-selectors';
 
 const MyProfile = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const userName = useSelector(selectUserName);
+  const userEmail = useSelector(selectUserEmail);
+  const dispatch = useDispatch();
 
   const handleToggleModal = () => {
     setIsOpen(isOpen => !isOpen);
   };
+
+  useEffect(() => {
+    if (!userName || !userEmail) {
+      dispatch(profileOperations.getProfile());
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <section>
@@ -25,7 +41,7 @@ const MyProfile = () => {
         <Avatar />
         <div className="grow">
           <div className="w-full flex justify-between items-center">
-            <p className="text-lg font-bold">Anna Doe</p>
+            <p className="text-lg font-bold">{userName}</p>
             <button className="text-indigo-500">Edit</button>
           </div>
           <div className="flex items-center  gap-x-1 text-slate-500 text-xs">
@@ -39,7 +55,7 @@ const MyProfile = () => {
             >
               <circle cx="2.22925" cy="2.84033" r="2" fill="#F2F2F5" />
             </svg>
-            <p>johndoe@gmail.com</p>
+            <p>{userEmail}</p>
           </div>
         </div>
       </div>

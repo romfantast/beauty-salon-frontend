@@ -5,13 +5,28 @@ import profileOperations from './profile-operations';
 
 const initialState = {
   avatarUrl: '',
+  email: '',
+  name: '',
   isLoading: false,
   error: null,
+};
+// reset to initial state
+const handleReset = state => {
+  state.avatarUrl = '';
+  state.email = '';
+  state.name = '';
+  state.isLoading = false;
+  state.error = null;
 };
 
 const profileSlice = createSlice({
   name: 'profile',
   initialState,
+  reducers: {
+    resetProfile(state) {
+      handleReset(state);
+    },
+  },
   extraReducers: builder => {
     builder
       .addCase(profileOperations.updateAvatar.pending, state => {
@@ -35,6 +50,18 @@ const profileSlice = createSlice({
       .addCase(profileOperations.getAvatar.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
+      })
+      .addCase(profileOperations.getProfile.pending, state => {
+        state.isLoading = true;
+      })
+      .addCase(profileOperations.getProfile.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.email = action.payload.user.email;
+        state.name = action.payload.user.name;
+      })
+      .addCase(profileOperations.getProfile.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
       });
   },
 });
@@ -42,10 +69,11 @@ const profileSlice = createSlice({
 const persistConfigProfile = {
   key: 'profile',
   storage,
-  whitelist: ['avatarUrl'],
+  whitelist: ['avatarUrl', 'email', 'name'],
 };
 
 export const profileReducer = persistReducer(
   persistConfigProfile,
   profileSlice.reducer
 );
+export const { resetProfile } = profileSlice.actions;

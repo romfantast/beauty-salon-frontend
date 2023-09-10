@@ -27,7 +27,19 @@ const getAvatar = createAsyncThunk(
     }
   }
 );
+const getProfile = createAsyncThunk(
+  '/profile/getProfile',
+  async (_, thunkAPI) => {
+    checkIsToken(thunkAPI);
+    try {
+      const { data } = await profileAPI.getProfile();
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
+  }
+);
 
-const profileOperations = { updateAvatar, getAvatar };
+const profileOperations = { updateAvatar, getAvatar, getProfile };
 
 export default profileOperations;

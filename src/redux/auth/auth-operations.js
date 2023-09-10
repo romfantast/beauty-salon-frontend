@@ -1,4 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { resetProfile } from 'redux/profile/profile-slice';
 import API, { checkIsToken, token } from 'services/authAPI';
 
 const register = createAsyncThunk(
@@ -27,6 +28,7 @@ const logout = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
   checkIsToken(thunkAPI);
   try {
     const { data } = await API.logout();
+    thunkAPI.dispatch(resetProfile());
     token.unset();
     return data;
   } catch (error) {

@@ -2,10 +2,14 @@ import React, { useEffect } from 'react';
 import { BsCloudUpload } from 'react-icons/bs';
 import { useDispatch, useSelector } from 'react-redux';
 import profileOperations from 'redux/profile/profile-operations';
-import { selectAvatarUrl } from 'redux/profile/profile-selectors';
+import {
+  selectAvatarUrl,
+  selectIsAvatarLoading,
+} from 'redux/profile/profile-selectors';
 
 function Avatar() {
   const { avatarUrl } = useSelector(selectAvatarUrl);
+  const isAvatarLoading = useSelector(selectIsAvatarLoading);
   const dispatch = useDispatch();
 
   const handleSubmitImage = async e => {
@@ -16,7 +20,8 @@ function Avatar() {
   };
   useEffect(() => {
     !avatarUrl && dispatch(profileOperations.getAvatar());
-  }, [dispatch, avatarUrl]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <>
@@ -26,9 +31,13 @@ function Avatar() {
             style={{ borderRadius: '50%' }}
             className="w-16 h-16"
             src={avatarUrl}
-            alt="avatar"
+            alt="ava"
             loading="lazy"
           />
+          {isAvatarLoading && (
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75"></span>
+          )}
+
           <label className="absolute w-full h-full cursor-pointer">
             <input
               className="w-0 h-0 opacity-0 overflow-hidden"
@@ -44,6 +53,9 @@ function Avatar() {
           style={{ borderRadius: '50%' }}
         >
           <BsCloudUpload />
+          {isAvatarLoading && (
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75"></span>
+          )}
           <label className="absolute w-full h-full cursor-pointer">
             <input
               className="w-0 h-0 opacity-0 overflow-hidden"
