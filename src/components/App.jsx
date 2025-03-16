@@ -9,6 +9,7 @@ import { NotFound } from 'pages/NotFound/NotFound';
 import { selectIsAuth } from 'redux/auth/auth-selectors';
 import PrivateRoute from './PrivateRoute/PrivateRoute';
 import Home from 'pages/Home/Home';
+import { useUnauthorizedUser } from 'hooks/useUnauthorizedUser';
 
 const LoginPage = lazy(() => import('pages/LoginPage/LoginPage'));
 const RegisterPage = lazy(() => import('pages/RegisterPage/RegisterPage'));
@@ -18,6 +19,8 @@ const MyProfile = lazy(() => import('pages/MyProfile/MyProfile'));
 export const App = () => {
   const isAuth = useSelector(selectIsAuth);
   const location = useLocation();
+  useUnauthorizedUser();
+
   return (
     <AnimatePresence>
       <Routes location={location} key={location.pathname}>
